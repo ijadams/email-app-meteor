@@ -1,0 +1,334 @@
+<template name="EmailsDetails">
+	<div class="page-container container" id="content">
+		<div class="row" id="title_row">
+			<div class="col-md-12">
+				<div id="page_menu" class="pull-right">
+				</div>
+			</div>
+		</div>
+		{{> EmailsDetailsDetailsForm}}
+	</div>
+</template>
+
+<template name="EmailsDetailsDetailsForm">
+	<div id="emails-details-details-form" class="">
+		<h2 id="component-title">
+			<a href="#" id="form-back-button" class="btn btn-default" title="back">
+				<span class="fa fa-chevron-left">
+				</span>
+			</a>
+			Details
+		</h2>
+		<form role="form" class="form-horizontal">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-name">
+				<label for="name" class="col-sm-3 control-label">
+					Client
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{email.name}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-due-date">
+				<label for="dueDate" class="col-sm-3 control-label">
+					Due Date
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{formatDate email.dueDate ''}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-send-date">
+				<label for="sendDate" class="col-sm-3 control-label">
+					Date to Send
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{formatDate email.sendDate ''}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-job-number">
+				<label for="jobNumber" class="col-sm-3 control-label">
+					Job Nuber
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{email.jobNumber}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-project-manager">
+				<label for="projectManager" class="col-sm-3 control-label">
+					Project Manager
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{email.projectManager}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-subject-line">
+				<label for="subjectLine" class="col-sm-3 control-label">
+					Subject Line
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{email.subjectLine}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-sender-name">
+				<label for="senderName" class="col-sm-3 control-label">
+					Sender Name
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{email.senderName}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-sender-email">
+				<label for="senderEmail" class="col-sm-3 control-label">
+					Sender Email
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{email.senderEmail}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-lists">
+				<label for="lists" class="col-sm-3 control-label">
+					List(s) to Send To
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{email.lists}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-email-service-bool">
+				<label for="emailServiceBool" class="col-sm-3 control-label">
+					Email Service/Login
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{email.emailServiceBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-imfooter-bool">
+				<label for="imfooterBool" class="col-sm-3 control-label">
+					designed by IM Marketing Group added
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.imfooterBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-text-only-bool">
+				<label for="textOnlyBool" class="col-sm-3 control-label">
+					Text-only Version Provided !IMPORTANT!
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.textOnlyBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-client-address-bool">
+				<label for="clientAddressBool" class="col-sm-3 control-label">
+					Business address for client at bottom
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.clientAddressBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-phone-linked-bool">
+				<label for="phoneLinkedBool" class="col-sm-3 control-label">
+					Phone Number linked on mobile
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.phoneLinkedBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-absolute-paths-bool">
+				<label for="absolutePathsBool" class="col-sm-3 control-label">
+					Absolute Path images (+ double check paths)
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.absolutePathsBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-client-info-bool">
+				<label for="clientInfoBool" class="col-sm-3 control-label">
+					All client info correct in code
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.clientInfoBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-view-in-browser-bool">
+				<label for="viewInBrowserBool" class="col-sm-3 control-label">
+					View in Browser added?
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.viewInBrowserBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-images-display-block-alt-tags-bool">
+				<label for="imagesDisplayBlockAltTagsBool" class="col-sm-3 control-label">
+					Images include display block + alt tags
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.imagesDisplayBlockAltTagsBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-spacer-gifs-bool">
+				<label for="spacerGifsBool" class="col-sm-3 control-label">
+					Remove spacer gifs
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.spacerGifsBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-rows-to-tables-bool">
+				<label for="rowsToTablesBool" class="col-sm-3 control-label">
+					Break out rows into separate centered tables
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.rowsToTablesBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-permission-reminder-bool">
+				<label for="permissionReminderBool" class="col-sm-3 control-label">
+					PERMISSION REMINDER ON with correct email
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.permissionReminderBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-tests-sent-bool">
+				<label for="testsSentBool" class="col-sm-3 control-label">
+					Email tests sent and verified
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.testsSentBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-df-footer-bool">
+				<label for="dfFooterBool" class="col-sm-3 control-label">
+					Demandforce – include coded footer
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.dfFooterBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-cc-tracking-bool">
+				<label for="ccTrackingBool" class="col-sm-3 control-label">
+					ConstantContact – include open tracking code
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.ccTrackingBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-test-email-approved-bool">
+				<label for="testEmailApprovedBool" class="col-sm-3 control-label">
+					Test email approved
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.testEmailApprovedBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-email-in-wobool">
+				<label for="emailInWOBool" class="col-sm-3 control-label">
+					Developer has email list in work order / email
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.emailInWOBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-friday-bool">
+				<label for="fridayBool" class="col-sm-3 control-label">
+					Code/send is NOT both on Friday
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.fridayBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-send-next-day-bool">
+				<label for="sendNextDayBool" class="col-sm-3 control-label">
+					Code/send NOT same day if send date is next day
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{booleanToYesNo email.sendNextDayBool}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-test-url">
+				<label for="testURL" class="col-sm-3 control-label">
+					Test URL
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{email.testURL}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="submit-div col-sm-9 col-sm-offset-3">
+					<a href="#" id="form-close-button" class="btn btn-primary">
+						OK
+					</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</template>
+
