@@ -29,35 +29,61 @@ h5 a, h5 a:hover,
 h6 a, h6 a:hover {
 	text-decoration: none;
 }
+.button:hover {cursor: pointer !important;}
+a:hover {cursor:pointer !important;}
 
-h2#component-title {color: white;}
+#menu ul li a {color: gray;font-weight: 300;}
+
+h2#component-title {color: white;font-weight: 100;}
+
+a.navbar-brand {color: gray;font-weight: 100;}
 
 tbody#dataview-table-items {
     color: black;
 }
-.jumbotron p {color: gray;}
+.jumbotron {background: none;color:white;}
+.jumbotron p, .jumbotron h1 {color: white;}
+
+.alert-warning {background: white;}
 
 .btn-primary {
 	border-radius: 0px;
-	background: none;
-	color:black;
-	border:2px solid black;
+	background: transparent !important;
+	color:white;
+	border:2px solid white !important;
 	text-transform: uppercase;
 	transition: 0.2s;
 	&:hover {
-		background: #02AAB0;
-		border-color: #02AAB0;
-		cursor: pointer !important;
+		background: white !important;
+		color:#02AAB0;
+		border-color: white;
 	}
 }
 
-input#dataview-search-input {border-radius: 0px;}
+.btn-default {background-color: rgba(0,0,0,0);border-color: white;}
+.btn-default:hover{color:#02AAB0;background: white;cursor: pointer;border-color: white;}
+
+
+input#dataview-search-input {
+    border-radius: 0px;
+    background: none;
+    border: 2px solid white;
+    padding: 6px 10px;
+    color: white !important;
+    height: 100%;
+    ::-webkit-input-placeholder {color:lightgray;}
+}
+
+
 .form-group .btn {
     border-radius: 0px;
 	background: none;
 	color:white;
 	border:2px solid white;
 	text-transform: uppercase;
+	padding: 6px 10px;
+	transition:0.2s;
+	&:hover {color:#02AAB0;background: white;cursor: pointer;}
 }
 
 /* Wrapper for page content to push down footer */
